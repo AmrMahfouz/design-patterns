@@ -1,12 +1,19 @@
 package abstractfactory;
 
+import abstractfactory.colors.ColorType;
+import abstractfactory.shapes.ShapeType;
+
 public class Main {
 
     public static void main(String[] args) {
-        AbstractFactory factory = AbstractFactory.getFactory(ComputerGrade.TYPE_B);
-        System.out.println("CPU Type : " + factory.getCPU().getName());
-        System.out.println("Motherboard Type : " + factory.getMotherBoard().getName());
-        System.out.println("Memory Type : " + factory.getMemory().getName());
+        AbstractFactory colorFactory = FactoryProducer.getFactory(FactoryType.COLOR);
+        colorFactory.getColor(ColorType.RED).fill();
+        colorFactory.getColor(ColorType.GREEN).fill();
+        colorFactory.getColor(ColorType.BLUE).fill();
+        AbstractFactory shapeFactory = FactoryProducer.getFactory(FactoryType.SHAPE);
+        shapeFactory.getShape(ShapeType.CIRCLE).draw();
+        shapeFactory.getShape(ShapeType.RECTANGLE).draw();
+        shapeFactory.getShape(ShapeType.SQUARE).draw();
     }
 
 }
